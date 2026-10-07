@@ -1,1 +1,134 @@
+<!doctype html>
+<html lang="nl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="theme-color" content="#7c3aed" />
+    <title>Eenhoorn Rekenen</title>
+    <link rel="stylesheet" href="style.css?v=20261002aa" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header>
+        <div class="brand"><span aria-hidden="true">🦄 🦖</span><div><h1 id="appTitle">Eenhoorn Rekenen</h1><p>Spelen met cijfers</p></div></div>
+        <div class="header-actions">
+          <div class="theme-toggle" aria-label="Kies thema">
+            <button id="themeUnicornBtn" class="theme-pill active" type="button" aria-pressed="true">🦄 Eenhoorn</button>
+            <button id="themeDinoBtn" class="theme-pill" type="button" aria-pressed="false">🦖 Dino</button>
+          </div>
+          <button class="sound-button" id="resetButton" type="button" title="Wis alle voortgang">↺ Opnieuw</button>
+        </div>
+      </header>
 
+      <section id="startScreen" class="screen">
+        <div class="hero-card">
+          <div class="rainbow" aria-hidden="true">🦄 🌈 🦖</div>
+          <h2>Hallo, rekenmaatje!</h2>
+          <p>Bekijk het plaatje, tel goed en typ jouw antwoord. Elke ster helpt de eenhoorn en de dino verder.</p>
+          <label for="playerName">Hoe heet jij?</label>
+          <input id="playerName" maxlength="20" autocomplete="name" placeholder="Jouw naam" />
+          <button id="startButton" class="primary-button" type="button">Verder ✨</button>
+          <p class="save-note">Je voortgang wordt op dit apparaat bewaard.</p>
+        </div>
+      </section>
+
+      <section id="modeScreen" class="screen hidden" aria-labelledby="modeTitle">
+        <div class="hero-card">
+          <div class="rainbow" aria-hidden="true">🦄 🌟 🦖</div>
+          <h2 id="modeTitle">Kies je oefeningen</h2>
+          <div class="mode-grid">
+            <button id="level1Button" class="mode-card" type="button">
+              <span class="mode-badge">Oefening 1</span>
+              <strong>Getallen benoemen</strong>
+              <span class="mode-preview" aria-hidden="true"><span class="dice preview-die"><span class="dot"></span><span class="dot empty"></span><span class="dot"></span><span class="dot empty"></span><span class="dot"></span><span class="dot empty"></span><span class="dot"></span><span class="dot empty"></span><span class="dot"></span></span></span>
+            </button>
+            <button id="level2Button" class="mode-card" type="button">
+              <span class="mode-badge accent">Oefening 2</span>
+              <strong>Aanvullen tot 10</strong>
+              <span class="mode-preview preview-equation" aria-hidden="true"><span class="make-ten-given">4</span><span>+</span><span class="make-ten-missing">?</span><span>=</span><span class="make-ten-target">10</span></span>
+            </button>
+            <button id="level3Button" class="mode-card" type="button">
+              <span class="mode-badge">Oefening 3</span>
+              <strong>Rekenen tot 10</strong>
+              <span class="mode-preview preview-equation" aria-hidden="true"><span class="make-ten-given">3</span><span>+</span><span class="make-ten-given">2</span><span>=</span><span class="make-ten-missing">?</span></span>
+            </button>
+            <button id="level4Button" class="mode-card" type="button">
+              <span class="mode-badge accent">Oefening 4</span>
+              <strong>Buurgetallen</strong>
+              <span class="mode-preview preview-sequence" aria-hidden="true"><span class="preview-tile">3</span><span class="preview-tile">4</span><span class="preview-tile preview-missing">?</span><span class="preview-tile">6</span></span>
+            </button>
+            <button id="level5Button" class="mode-card" type="button">
+              <span class="mode-badge">Oefening 5</span>
+              <strong>Grote en kleine buur</strong>
+              <span class="mode-preview preview-neighbors" aria-hidden="true"><span class="preview-relation"><span class="preview-tile preview-missing">?</span><span>&lt;</span><span class="preview-tile">5</span></span></span>
+            </button>
+            <button id="level6Button" class="mode-card" type="button">
+              <span class="mode-badge accent">Oefening 6</span>
+              <strong>Splitsen tot 10</strong>
+              <span class="mode-preview preview-split" aria-hidden="true"><span class="preview-split-total preview-tile">7</span><span class="preview-split-branches"><i></i><i></i><i></i></span><span class="preview-split-parts"><span class="preview-split-known"><i></i><i></i><i></i></span><span class="preview-split-unknown">?</span></span></span>
+            </button>
+            <button id="level7Button" class="mode-card" type="button">
+              <span class="mode-badge">Oefening 7</span>
+              <strong>Splitsen tot 20</strong>
+              <span class="mode-preview preview-split" aria-hidden="true"><span class="preview-split-total preview-tile">15</span><span class="preview-split-branches"><i></i><i></i><i></i></span><span class="preview-split-parts"><span class="preview-split-known preview-split-number">8</span><span class="preview-split-unknown">?</span></span></span>
+            </button>
+            <button id="level8Button" class="mode-card" type="button">
+              <span class="mode-badge accent">Oefening 8</span>
+              <strong>Rekenen tot 20</strong>
+              <span class="mode-preview preview-equation" aria-hidden="true"><span class="make-ten-given">12</span><span>+</span><span class="make-ten-given">5</span><span>=</span><span class="make-ten-missing">?</span></span>
+            </button>
+            <button id="level9Button" class="mode-card" type="button">
+              <span class="mode-badge">Oefening 9</span>
+              <strong>Tellen met sprongen +2</strong>
+              <span class="mode-preview preview-sequence" aria-hidden="true"><span class="preview-tile">2</span><span class="preview-tile">4</span><span class="preview-tile preview-missing">?</span><span class="preview-tile">8</span></span>
+            </button>
+            <button id="level10Button" class="mode-card" type="button">
+              <span class="mode-badge accent">Oefening 10</span>
+              <strong>Tellen met sprongen +5</strong>
+              <span class="mode-preview preview-sequence" aria-hidden="true"><span class="preview-tile">5</span><span class="preview-tile">10</span><span class="preview-tile preview-missing">?</span><span class="preview-tile">20</span></span>
+            </button>
+            <button id="level11Button" class="mode-card" type="button">
+              <span class="mode-badge">Oefening 11</span>
+              <strong>Tellen met sprongen +10</strong>
+              <span class="mode-preview preview-sequence" aria-hidden="true"><span class="preview-tile">10</span><span class="preview-tile">20</span><span class="preview-tile preview-missing">?</span><span class="preview-tile">40</span></span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="mapScreen" class="screen hidden" aria-labelledby="mapTitle">
+        <div class="welcome">
+          <button id="mapBackButton" class="text-button" type="button">← Kies oefeningen</button>
+          <div><p id="welcomeText">Kies een level</p><h2 id="mapTitle">Jouw sterrenpad</h2></div>
+          <div class="total-stars"><span>⭐</span> <strong id="starTotal">0</strong>/200</div>
+        </div>
+        <p class="map-help">Een level heeft 20 opdrachten. Haal 14 sterren om het volgende level vrij te spelen.</p>
+        <div id="levelGrid" class="level-grid"></div>
+      </section>
+
+      <section id="gameScreen" class="screen hidden" aria-live="polite">
+        <div class="game-top"><button id="backButton" class="text-button" type="button">← Oefeningen</button><p id="levelTitle">Oefening</p><p id="progressText">1 van 20</p></div>
+        <div class="progress-track"><div id="progressBar"></div></div>
+        <article class="question-card">
+          <p id="instruction">Hoeveel zie je?</p>
+          <div id="visual" class="visual" aria-label="Rekenmateriaal"></div>
+          <p id="questionHint" class="question-hint">Tel rustig.</p>
+          <form id="answerForm">
+            <label class="sr-only" for="answerInput">Jouw antwoord</label>
+            <input id="answerInput" inputmode="numeric" pattern="[0-9]*" autocomplete="off" placeholder="Typ een cijfer" />
+            <button class="primary-button" type="submit">Klaar</button>
+          </form>
+          <p id="feedback" class="feedback" role="status"></p>
+        </article>
+      </section>
+
+      <section id="resultScreen" class="screen hidden">
+        <div class="hero-card result-card"><div id="resultEmoji" class="result-emoji">🎉</div><h2 id="resultTitle">Goed gedaan!</h2><p id="resultText"></p><div id="earnedStars" class="earned-stars"></div><button id="againButton" class="primary-button" type="button">Terug naar oefeningen</button></div>
+      </section>
+    </main>
+    <script src="app.js?v=20261002ab"></script>
+  </body>
+</html>
