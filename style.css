@@ -142,7 +142,7 @@ header {
 }
 
 .hero-card, .question-card {
-  background:rgba(255,255,255,.94);
+  background:var(--paper);
   box-shadow:0 14px 38px #5b21b622;
   border:3px solid #fff;
   border-radius:28px;
@@ -236,7 +236,7 @@ body[data-theme="dino"] #startScreen .start-unicorn { display:none; }
   justify-items:start;
   gap:3px 12px;
   padding:7px 16px;
-  border:3px solid #ddd6fe;
+  border:3px solid var(--purple);
   border-radius:20px;
   background:linear-gradient(180deg,#fff,#f5f3ff);
   color:var(--ink);
@@ -1009,6 +1009,27 @@ body[data-theme="dino"] .hero-card p {
   color:#1d4d37;
 }
 body[data-theme="dino"] .header-actions .sound-button { color:#166534; }
+body[data-theme="dino"] .mode-card {
+  border-color:var(--violet);
+  background:linear-gradient(180deg,var(--paper),var(--mint));
+  box-shadow:0 8px 18px rgba(34,197,94,0.16);
+}
+body[data-theme="dino"] .mode-preview .make-ten-given,
+body[data-theme="dino"] .mode-preview .make-ten-missing,
+body[data-theme="dino"] .mode-preview .make-ten-target,
+body[data-theme="dino"] .mode-preview .preview-tile,
+body[data-theme="dino"] .mode-preview .preview-split-known,
+body[data-theme="dino"] .mode-preview .preview-split-unknown {
+  border-color:var(--violet);
+  background:var(--paper);
+  color:var(--ink);
+}
+body[data-theme="dino"] .mode-preview .preview-tile.preview-missing,
+body[data-theme="dino"] .mode-preview .make-ten-missing,
+body[data-theme="dino"] .mode-preview .preview-split-unknown {
+  border-style:dashed;
+  background:var(--mint);
+}
 body[data-theme="dino"] .level-card { box-shadow:0 7px 0 #bbf7d0; }
 body[data-theme="dino"] .level-card:disabled {
   background:#e6f9ed;
@@ -1020,10 +1041,11 @@ body[data-theme="dino"] .hero-card {
   box-shadow:0 14px 38px rgba(34,197,94,0.22);
 }
 body[data-theme="dino"] .primary-button {
-  background:linear-gradient(135deg,#166534,#22c55e);
-  box-shadow:0 5px 0 #14532d;
+  background:linear-gradient(135deg,var(--purple),var(--pink));
+  box-shadow:0 5px 0 var(--button-shadow);
 }
-body[data-theme="dino"] .primary-button:active { box-shadow:0 2px 0 #14532d; }
+
+body[data-theme="dino"] .primary-button:active { box-shadow:0 2px 0 var(--button-shadow); }
 body[data-theme="dino"] .sequence-box { background:#f0fdf4; border-color:#86efac; }
 body[data-theme="dino"] .sequence-box.missing { background:#dcfce7; border-color:#22c55e; }
 body[data-theme="dino"] .sequence-box.answer-slot { background:#ecfccb; border-color:#65a30d; }
